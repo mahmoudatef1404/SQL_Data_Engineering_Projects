@@ -1,4 +1,14 @@
 
+/*
+ Question: What are the most optimal skills for data engineers—balancing both demand and salary?
+ - Create a ranking column that combines demand count and median salary to identify the most valuable skills.
+ - Focus only on remote Data Engineer positions with specified annual salaries.
+ - Why?
+ - This approach highlights skills that balance market demand and financial reward. It weights core skills appropriately instead of letting rare, outlier skills distort the results.
+ - The natural log transformation ensures that both high-salary and widely in-demand skills surface as the most practical and valuable to learn for data engineering careers.
+ */
+
+
 SELECT sd.skills as skill,
     ROUND(median(jpf.salary_year_avg), 0) as median_salary,
     COUNT(jpf.*) as demand_count,
@@ -19,14 +29,6 @@ ORDER BY optimal_score DESC
 LIMIT 25;
 
 
-/*
- Question: What are the most optimal skills for data engineers—balancing both demand and salary?
- - Create a ranking column that combines demand count and median salary to identify the most valuable skills.
- - Focus only on remote Data Engineer positions with specified annual salaries.
- - Why?
- - This approach highlights skills that balance market demand and financial reward. It weights core skills appropriately instead of letting rare, outlier skills distort the results.
- - The natural log transformation ensures that both high-salary and widely in-demand skills surface as the most practical and valuable to learn for data engineering careers.
- */
 /*
  Here's a breakdown of the most optimal skills for Data Engineers, based on both high demand and high salaries:
  
